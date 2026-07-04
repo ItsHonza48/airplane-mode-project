@@ -1,0 +1,12 @@
+{
+  "name": "linux-macbook-airplane-mode",
+  "version": "1.0.0",
+  "description": "Custom airplane mode scripts for Linux MacBook",
+  "main": "airplane-mode"
+  "bin": {
+    "airplane-mode": "./airplane-mode",
+    "normal-mode": "./normal-mode"
+  },
+  "author": "ItsHonza48",
+  "licence": "MIT"
+}
