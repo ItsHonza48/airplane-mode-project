@@ -46,3 +46,6 @@ If it returns 0, Turbo Boost is ENABLED (Normal mode is active).
 This script works perfectly with tools like **Slimbook Battery**.
 When you activate `airplane-mode`, the CPU Turbo Boost is strictly capped regardless of your Slimbook profile.
 For maximum battery savings during flight, it is recommended to switch Slimbook Battery to **Energy Saving** mode manually via the tray icon, though the script handles the most power-hungry components (Wi-Fi, Bluetooth, and Turbo Boost) automatically.
+
+## Credits
+* Developed by me and also vibecoded with gemini i did almost all the work but didn't understand the Turbo Boost part and i didn't know how to compile this it also helped me with optimizing the script so there are less lines if i did it myself.
