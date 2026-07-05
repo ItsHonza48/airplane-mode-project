@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Check if zenity is installed
+if ! command -v zenity &> /dev/null; then
+    pkexec apt install zenity -y
+    fi
+
+# Show GUI menu
+CHOICE=$(zenity --list --radiolist --title="Airplane Mode" --width=350 --height=250 \
+    --column="Select" --column="Mode" \
+    FALSE "Airplane Mode (Save Battery)" \
+    FALSE "Normal Mode (Full Performance)")
+
+# Execute the correct script based on the selection using pkexec
+if [ "$CHOICE" == "Airplane Mode (Save Battery)" ]; then
+    pkexec airplane-mode
+    zenity --info --text="Airplane Mode activated!\n\n• Turbo Boost is now disabled\n• Wi-Fi and Bluetooth are turned off" --width=300
+elif [ "$CHOICE" == "Normal Mode (Full Performance)" ]; then
+    pkexec normal-mode
+    zenity --info --text="Normal Mode activated!\n\• Full performance restored\n• Networking enabled" --width=300
+fi
