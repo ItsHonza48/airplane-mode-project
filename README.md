@@ -13,29 +13,22 @@ This is a lightweight bash script project designed to maximize battery life duri
 
 ## Instalation and Usage
 
-## Option 1: Install as a global package (I recommend this)
-You can install these tools globally directly from GitHub using npm:
-
+## 1. Clone this repo
 ```bash
-sudo npm install -g https://github.com/ItsHonza48/airplane-mode-project
-
-Once installed, run them from anywhere in your terminal:
-sudo airplane-mode
-sudo normal-mode
-
-## Option 2: Run locally (Standalone)
-If you don't have npm or want to run the scripts locally:
-
-1. Clone this repo:
 git clone https://github.com/ItsHonza48/airplane-mode-project.git
 cd airplane-mode-project
 
-2. Make them executable:
-chmod +x airplane-mode normal-mode
+## 2. Build the Debian package
+Run the package manager tool to bundle the DEBIAN and usr folders into a single installable .deb file:
+dpkg-deb --build . airplane-mode.deb
 
-3. Run them
-before flight: sudo ./airplane-mode
-after landing: sudo ./normal-mode
+## 3. Install in  globally
+Install the generated package using dpkg:
+sudo dpkg -i airplane-mode.deb
+
+## How to run
+Once installed, the utility is available globally in your system. You can launch the interactive GUI from any terminal by running:
+airplane-mode-gui
 
 ## How to verify it works
 
