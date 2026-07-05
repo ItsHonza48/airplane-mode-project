@@ -1,5 +1,5 @@
 {
-  "name": "linux-macbook-airplane-mode",
+  "name": "airplane-mode-project",
   "version": "1.0.0",
   "description": "Custom airplane mode scripts for Linux MacBook",
   "main": "airplane-mode"
