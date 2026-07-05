@@ -13,16 +13,29 @@ This is a lightweight bash script project designed to maximize battery life duri
 
 ## Instalation and Usage
 
-1. Clone or download this repo to your drive.
-2. Open your terminal in the project directory and make the scripts executable:
+## Option 1: Install as a global package (I recommend this)
+You can install these tools globally directly from GitHub using npm:
+
 ```bash
+sudo npm install -g https://github.com/ItsHonza48/airplane-mode-project
+
+Once installed, run them from anywhere in your terminal:
+sudo airplane-mode
+sudo normal-mode
+
+## Option 2: Run locally (Standalone)
+If you don't have npm or want to run the scripts locally:
+
+1. Clone this repo:
+git clone https://github.com/ItsHonza48/airplane-mode-project.git
+cd airplane-mode-project
+
+2. Make them executable:
 chmod +x airplane-mode normal-mode
 
-3. Before takeoff, run the airplane mode script:
-sudo ./airplane-mode
-
-4. After landing, restore your settings back to normal:
-sudo ./normal-mode
+3. Run them
+before flight: sudo ./airplane-mode
+after landing: sudo ./normal-mode
 
 ## How to verify it works
 

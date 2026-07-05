@@ -1,0 +1,17 @@
+#!/bin/bash
+echo "Enabling airplane mode..."
+
+# 1. Turn off all wireless interfaces
+nmcli networking off
+bluetoothctl power off
+
+# 2. Turn off Turbo Boost on intel CPUs (if compatible macbook pro 2011 is.)
+if [ -f /sys/devices/system/cpu/intel_pstate/no_turbo]; then
+    echo 1 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo
+    fi 
+
+    # 3. Turn on Slimbook Battery (if has CLI)
+    # Slimbook usually has a command called slimbookbattery, but we will leave it on the script,
+    # wifi and bluetooth and processor ale the main things.
+
+    echo "Airplane mode activated. You are saving the most battery percentage possible. Enjoy your flight!"
