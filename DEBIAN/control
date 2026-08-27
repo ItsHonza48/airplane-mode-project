@@ -3,6 +3,7 @@ Version: 1.0.0
 Section: utils
 Priority: optional
 Architecture: all
+Depends: zenity, network-manager, bluez
 Maintainer: ItsHonza48
 Description: Custom-made power-saving utility with GUI for Linux Macbook Pro 2011.
  Instantly disables wireless networks and caps the CPU power to maximize battery life.
