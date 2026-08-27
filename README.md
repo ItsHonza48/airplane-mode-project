@@ -35,6 +35,7 @@ Once you installed it, You can open the Gui in your terminal using the command a
 You can check if the Intel Turbo Boost is really disabled by running this command in your terminal:
 ```bash
 cat /sys/devices/system/cpu/intel_pstate/no_turbo
+```
 
 If it returns 1, Turbo Boost is DISABLED (Airplane mode is active).
 
