@@ -1,17 +1,28 @@
 #!/bin/bash
 echo "Enabling airplane mode..."
 
+# 0. Zkontroluj že jsou nainstalované potřebné nástroje
+for cmd in nmcli bluetoothctl; do
+    if ! command -v "$cmd" &> /dev/null; then
+        echo "Chyba: '$cmd' není nainstalován. Nainstaluj balíček network-manager / bluez a zkus to znovu." >&2
+        exit 1
+    fi
+done
+
 # 1. Turn off all wireless interfaces
 nmcli networking off
 bluetoothctl power off
 
-# 2. Turn off Turbo Boost on intel CPUs (if compatible macbook pro 2011 is.)
-if [ -f /sys/devices/system/cpu/intel_pstate/no_turbo]; then
-    echo 1 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo
-    fi 
+# 2. Turn off Turbo Boost, ale jen na Intel CPU s podporou intel_pstate
+if grep -qi "GenuineIntel" /proc/cpuinfo && [ -f /sys/devices/system/cpu/intel_pstate/no_turbo ]; then
+    echo 1 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo > /dev/null
+    echo "Turbo Boost disabled."
+else
+    echo "Turbo Boost step skipped: not an Intel CPU with intel_pstate support."
+fi
 
-    # 3. Turn on Slimbook Battery (if has CLI)
-    # Slimbook usually has a command called slimbookbattery, but we will leave it on the script,
-    # wifi and bluetooth and processor ale the main things.
+# 3. Turn on Slimbook Battery (if has CLI)
+# Slimbook usually has a command called slimbookbattery, but we will leave it on the script,
+# wifi and bluetooth and processor ale the main things.
 
-    echo "Airplane mode activated. You are saving the most battery percentage possible. Enjoy your flight!"
+echo "Airplane mode activated. You are saving the most battery percentage possible. Enjoy your flight!"
