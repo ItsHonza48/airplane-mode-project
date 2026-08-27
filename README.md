@@ -17,6 +17,7 @@ This is a bash script that is quite light i would say. I designed this to maximi
 ```bash
 git clone https://github.com/ItsHonza48/airplane-mode-project.git
 cd airplane-mode-project
+```
 
 ## Then you should build the Debian package or download the release from this repo
 Run the package manager tool to bundle the DEBIAN and usr folders into a single installable .deb file:
