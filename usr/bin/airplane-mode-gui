@@ -1,9 +1,15 @@
 #!/bin/bash
 
-# Check if zenity is installed
+# Check if zenity is installed (záložní pojistka, i když je teď v Depends)
 if ! command -v zenity &> /dev/null; then
     pkexec apt install zenity -y
-    fi
+fi
+
+# Ověř, že jsou nainstalované hlavní skripty
+if ! command -v airplane-mode &> /dev/null || ! command -v normal-mode &> /dev/null; then
+    zenity --error --text="Chybí airplane-mode / normal-mode skripty. Přeinstaluj balíček." --width=300
+    exit 1
+fi
 
 # Show GUI menu
 CHOICE=$(zenity --list --radiolist --title="Airplane Mode" --width=350 --height=250 \
@@ -17,5 +23,5 @@ if [ "$CHOICE" == "Airplane Mode (Save Battery)" ]; then
     zenity --info --text="Airplane Mode activated!\n\n• Turbo Boost is now disabled\n• Wi-Fi and Bluetooth are turned off" --width=300
 elif [ "$CHOICE" == "Normal Mode (Full Performance)" ]; then
     pkexec normal-mode
-    zenity --info --text="Normal Mode activated!\n\• Full performance restored\n• Networking enabled" --width=300
+    zenity --info --text="Normal Mode activated!\n\n• Full performance restored\n• Networking enabled" --width=300
 fi
